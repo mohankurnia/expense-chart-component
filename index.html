@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="/style.css">
+  
+  <title>Frontend Mentor | Expenses Chart Component</title>
+</head>
+<body>
+
+  <div class="chart chart__container">
+    <div class="chart chart__title">
+      <div class="chart chart__balance">
+        <p class="chart chart__balance-text">
+          My balance
+        </p>
+        <h2 class="chart chart__balance-value">
+          $921.48
+        </h2>
+      </div>
+      <div class="chart chart__logo">
+        <img src="/images/logo.svg" alt="Logo Mark" class="chart__logo-image">
+      </div>
+    </div>
+    <div class="chart chart__body">
+      <div class="chart chart__heading">
+        <h2 class="chart chart__heading-text">
+          Spending - Last 7 days
+        </h2>
+      </div>
+      <div class="chart chart__bar">
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="chart chart__detail">
+        <div class="chart chart__detail-total">
+          <p class="chart chart__detail-total-text">
+            Total this month
+          </p>
+          <h1 class="chart chart__detail-total-value">
+            $478.33
+          </h1>
+        </div>
+        <div class="chart chart__detail-percent">
+          <h5 class="chart chart__detail-percent-value">
+            +2.4%
+          </h5>
+          <p class="chart chart__detail-percent-text">
+            from last month
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    <p>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/mohankurnia">Mohan Kurnia</a></p>.
+  </div>
+
+  <!-- Chart JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Local JS -->
+  <script>
+    // Chart Setup
+    const labels = [
+      'mon',
+      'tue',
+      'wed',
+      'thu',
+      'fri',
+      'sat',
+      'sun'
+    ];
+
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Expense Chart',
+        backgroundColor: [
+          'hsl(10, 79%, 65%)',
+          'hsl(10, 79%, 65%)',
+          'hsl(186, 34%, 60%)',
+          'hsl(10, 79%, 65%)',
+          'hsl(10, 79%, 65%)',
+          'hsl(10, 79%, 65%)',
+          'hsl(10, 79%, 65%)',
+        ],
+        borderColor: 'hsl(10, 79%, 65%)',
+        borderRadius: '5',
+        data: [17.45, 34.91, 52.36, 31.07, 23.39, 43.28, 25.48]
+      }]
+    };  
+
+    const config = {
+      type: 'bar',
+      data: data,
+      options: {
+        interaction: {
+          mode: 'point'
+        },
+        plugins: {
+          legend: {
+            display: false
+          },
+          tooltip: {
+            yAlign: 'bottom',
+            titleAlign: 'center',
+            displayColors: false,
+            callbacks: {
+              label: function(context) {
+                let label = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                return label;
+              },
+              title: function() {}
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            display: false
+          }
+        }
+      }
+    };
+
+    // Chart Render
+    const barChart = new Chart(
+      document.getElementById('barChart'), 
+      config
+    );
+  </script>
+</body>
+</html>

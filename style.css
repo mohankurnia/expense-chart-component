@@ -1,0 +1,131 @@
+/* Color Variables */
+:root {
+  --primary-1: hsl(10, 79%, 65%);
+  --primary-2: hsl(186, 34%, 60%);
+
+  --neutral-1: hsl(25, 47%, 15%);
+  --neutral-2: hsl(28, 10%, 53%);
+  --neutral-3: hsl(27, 66%, 92%);
+  --neutral-4: hsl(33, 100%, 98%);
+
+  --shadow-1: 0 2px 13px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  background-color: var(--neutral-3);
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  margin: 24px 0;
+  position: relative;
+}
+
+.chart__container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.chart__title {
+  background-color: var(--primary-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-radius: 18px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-1);
+}
+
+.chart__balance-text {
+  color: var(--neutral-4);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.chart__balance-value {
+  color: var(--neutral-4);
+  font-size: 32px;
+}
+
+.chart__body {
+  background-color: var(--neutral-4);
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-1);
+} 
+
+.chart__heading-text {
+  color: var(--neutral-1);
+}
+
+.chart__bar {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(150, 150, 150, .3);
+}
+
+.chart__detail {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.chart__detail-total-text {
+  color: var(--neutral-2);
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.chart__detail-total-value {
+  color: var(--neutral-1);
+  font-size: 42px;
+}
+
+.chart__detail-percent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chart__detail-percent-value {
+  color: var(--neutral-1);
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.chart__detail-percent-text {
+  color: var(--neutral-2);
+  font-size: 16px;
+}
+
+.attribution {
+  width: 100%;
+  background-color: black;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: fixed;
+  bottom: 0;
+}
+
+.attribution a {
+  color: var(--primary-1);
+  text-decoration: none;
+}
+
+.attribution a:hover {
+  text-decoration: underline;
+}
